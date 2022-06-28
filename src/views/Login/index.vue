@@ -1,6 +1,6 @@
 <template>
   <div>
-    <van-nav-bar title="登录">
+    <van-nav-bar title="登录" @click-left="$router.back()">
       <template #left>
         <van-icon name="cross" />
       </template>
@@ -20,7 +20,7 @@
         ]"
       >
         <template #left-icon>
-          <i class="toutiao toutiao-shouji"></i>
+          <TtIcon name="shouji"></TtIcon>
         </template>
       </van-field>
       <van-field
@@ -34,7 +34,7 @@
         ]"
       >
         <template #left-icon>
-          <i class="toutiao toutiao-yanzhengma"></i>
+          <TtIcon name="yanzhengma"></TtIcon>
         </template>
         <template #button>
           <van-count-down
@@ -68,9 +68,9 @@ export default {
   created () { },
   data () {
     return {
-      mobile: '13911111111',
+      mobile: '15180617297',
       code: '246810',
-      time: 5 * 1000,
+      time: 60 * 1000,
       isCountDownShow: false// 默认倒计时不显示
     }
   },
@@ -81,10 +81,12 @@ export default {
         const res = await login(values)
         // 将token值存储在vuex仓库中 作为全局数据使用
         this.$store.commit('setUser', res.data.data)
+        this.$router.push({ name: 'my' })
       } catch (error) {
         console.log(error)
       }
     },
+    // 验证手机号
     async sendSms () {
       try {
         // 校验用户是否输入了正确的手机号 手机号正确才可以发送验证码
