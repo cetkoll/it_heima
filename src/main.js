@@ -11,6 +11,10 @@ import 'amfe-flexible'
 import '@/styles/index.less'
 // 将字体图标封装为全局组件
 import TtIcon from '@/components/TtIcon.vue'
+import * as obj from '@/filters'
+Object.keys(obj).forEach(key => {
+  Vue.filter(key, obj[key])
+})
 Vue.component('TtIcon', TtIcon)
 Vue.use(Vant)
 Vue.config.productionTip = false
