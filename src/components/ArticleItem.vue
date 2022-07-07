@@ -1,5 +1,11 @@
 <template>
-  <van-cell class="article-item">
+<!-- $router.push({ name: 'article', params: { article_id: article.art_id } }) 路由跳转传参 -->
+  <van-cell
+    class="article-item"
+    @click="
+      $router.push({ name: 'article', params: { article_id: article.art_id } })
+    "
+  >
     <div slot="title" class="title van-multi-ellipsis--l2">
       {{ article.title }}
     </div>
